@@ -30,7 +30,7 @@ const userCreateService = async ({
   newUser.lastName = lastName;
   newUser.username = username;
   newUser.email = email;
-  newUser.password = password;
+  newUser.password = bcrypt.hashSync(password, 10);
   newUser.cpf = cpf;
   userRepository.create(newUser);
 
