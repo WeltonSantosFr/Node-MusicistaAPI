@@ -6,12 +6,12 @@ import { instanceToPlain } from "class-transformer";
 
 const userUpdateController = async (req: Request, res: Response) => {
   try {
-    const { cpf, email, lastName, name, password, username }: IUserUpdate =
+    const { email, password, username }: IUserUpdate =
       req.body;
     const { id } = req.user;
 
     const user = await userUpdateService(
-      { name, cpf, email, lastName, password, username },
+      { email, password, username },
       id
     );
 

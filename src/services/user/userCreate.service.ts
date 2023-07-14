@@ -5,12 +5,9 @@ import bcrypt from "bcrypt";
 import { AppError } from "../../errors/appError";
 
 const userCreateService = async ({
-  name,
-  lastName,
   username,
   email,
   password,
-  cpf,
 }: IUserRequest) => {
   const userRepository = AppDataSource.getRepository(User);
 
@@ -26,12 +23,9 @@ const userCreateService = async ({
   }
 
   const newUser = new User();
-  newUser.name = name;
-  newUser.lastName = lastName;
   newUser.username = username;
   newUser.email = email;
   newUser.password = bcrypt.hashSync(password, 10);
-  newUser.cpf = cpf;
   userRepository.create(newUser);
 
   await userRepository.save(newUser);

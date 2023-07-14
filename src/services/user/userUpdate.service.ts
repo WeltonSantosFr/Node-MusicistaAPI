@@ -5,7 +5,7 @@ import { User } from "../../entities/user.entity";
 import { AppError } from "../../errors/appError";
 
 const userUpdateService = async (
-  { name, email, password, cpf, lastName, username }: IUserUpdate,
+  { email, password, username }: IUserUpdate,
   id: string
 ) => {
   const userRepository = AppDataSource.getRepository(User);
@@ -26,10 +26,7 @@ const userUpdateService = async (
   }
 
   await userRepository.update(id, {
-    name: name ? name : user.name,
-    lastName: lastName ? lastName : user.lastName,
     username: username ? username : user.username,
-    cpf: cpf ? cpf : user.cpf,
     email: email ? email : user.email,
     password: password ? bcrypt.hashSync(password!, 10) : user.password,
   });

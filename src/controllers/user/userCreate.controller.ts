@@ -5,15 +5,12 @@ import userCreateService from "../../services/user/userCreate.service";
 
 const userCreateController = async (req: Request, res: Response) => {
   try {
-    const { name, lastName, username, email, cpf, password } = req.body;
+    const {  username, email, password } = req.body;
 
     const newUser = await userCreateService({
-      name,
-      lastName,
       username,
       email,
       password,
-      cpf,
     });
 
     return res.status(201).json(instanceToPlain(newUser));
