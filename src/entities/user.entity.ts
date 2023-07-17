@@ -14,12 +14,6 @@ export class User {
   readonly id: string;
 
   @Column()
-  name: string;
-
-  @Column()
-  lastName: string;
-
-  @Column()
   username: string;
 
   @Column()
@@ -28,10 +22,6 @@ export class User {
   @Exclude()
   @Column()
   password: string;
-
-  @Exclude()
-  @Column()
-  cpf: string;
 
   @CreateDateColumn()
   createdAt: Date;
