@@ -18,7 +18,7 @@ const userCreateService = async ({
   }
 
   if (user && !user.isActive) {
-    await userRepository.update(user.id, { isActive: false });
+    await userRepository.update(user.id, { isActive: true, password: bcrypt.hashSync(password, 10) });
     return user;
   }
 
