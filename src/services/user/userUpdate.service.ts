@@ -1,11 +1,11 @@
-import { IUserUpdate } from "./../../interface/user/index";
+import { UserUpdate } from "./../../interface/user/index";
 import bcrypt from "bcrypt";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities/user.entity";
 import { AppError } from "../../errors/appError";
 
 const userUpdateService = async (
-  { email, password, username }: IUserUpdate,
+  { email, password, username }: UserUpdate,
   id: string
 ) => {
   const userRepository = AppDataSource.getRepository(User);

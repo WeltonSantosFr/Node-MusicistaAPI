@@ -1,22 +1,22 @@
-export interface IUser {
+export interface User {
   username: string;
   email: string;
   password: string;
 }
 
-export interface IUserRequest {
+export interface UserRequest {
   username: string;
   email: string;
   password: string;
 }
 
-export interface IUserUpdate {
+export interface UserUpdate {
   username?: string;
   email?: string;
   password?: string;
 }
 
-export interface IUserLogin {
+export interface UserLogin {
   email: string;
   password: string;
 }

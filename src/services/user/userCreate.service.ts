@@ -1,4 +1,4 @@
-import { IUserRequest } from "./../../interface/user/index";
+import { UserRequest } from "./../../interface/user/index";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities/user.entity";
 import bcrypt from "bcrypt";
@@ -8,7 +8,7 @@ const userCreateService = async ({
   username,
   email,
   password,
-}: IUserRequest) => {
+}: UserRequest) => {
   const userRepository = AppDataSource.getRepository(User);
 
   const user = await userRepository.findOneBy({ email });
