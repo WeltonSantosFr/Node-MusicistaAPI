@@ -5,7 +5,7 @@ export interface MusicRequest {
     songName: string
     artist: string
     difficulty: number
-    data: UploadedFile | UploadedFile[]
+    data: Buffer
     userId: string
 }
 

@@ -25,7 +25,7 @@ export class Music {
     difficulty: number
 
     @Column({ type: 'bytea' })
-    data: UploadedFile | UploadedFile[]
+    data: Buffer
 
     @CreateDateColumn()
     createdAt: Date;

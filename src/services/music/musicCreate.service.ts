@@ -18,8 +18,6 @@ const musicCreateService = async ({songName, artist, difficulty, data, userId}: 
         throw new AppError(404, "User not found");
       }
 
-    console.log(data)
-
     const newMusic = new Music()
     newMusic.songName = songName
     newMusic.artist = artist

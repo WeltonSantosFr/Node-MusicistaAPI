@@ -1,7 +1,6 @@
 import { Request, Response } from "express"
 import { AppError, handleError } from "../../errors/appError"
 import musicCreateService from "../../services/music/musicCreate.service"
-import { UploadedFile } from "express-fileupload"
 
 const musicCreateController = async (req: Request, res: Response) => {
     // console.log(req.body)
@@ -9,9 +8,13 @@ const musicCreateController = async (req: Request, res: Response) => {
         if(!req.files || !req.files.data) {
             return res.status(400).send('No files were uploaded')
         }
-
+        
         const { songName, artist, difficulty } = req.body
-        const data = req.files.data
+        const file =  req.files.data
+        if(!('data' in file)) {
+            return res.status(400).send("Invalid file format")
+        }
+        const data: Buffer = file.data
         const { id } = req.user
 
         
