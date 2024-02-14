@@ -12,7 +12,7 @@ const routes = Router();
 export const userRoutes = () => {
   routes.post("/", userCreateController);
   routes.get("/", userListController);
-  routes.get("/", tokenAuthMiddleware, userInfoController);
+  routes.get("/userInfo", tokenAuthMiddleware, userInfoController);
   routes.patch("/", tokenAuthMiddleware, userUpdateController);
   routes.delete("/", tokenAuthMiddleware, userDeleteController);
   routes.post("/login", userLoginController);
