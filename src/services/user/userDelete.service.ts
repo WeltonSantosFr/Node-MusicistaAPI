@@ -12,11 +12,8 @@ const userDeleteService = async (id: string) => {
   if (!account) {
     throw new AppError(404, "User Not Found");
   }
-  if (!account.isActive) {
-    throw new AppError(400, "User Already Deleted");
-  }
-
-  await userRepository.update(account!.id, { isActive: false });
+  
+  await userRepository.delete(account!.id);
 
   return true;
 };
