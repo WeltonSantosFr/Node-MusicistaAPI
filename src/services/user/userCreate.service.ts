@@ -1,4 +1,4 @@
-import { IUserRequest } from "./../../interface/user/index";
+import { UserRequest } from "./../../interface/user/index";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities/user.entity";
 import bcrypt from "bcrypt";
@@ -8,7 +8,7 @@ const userCreateService = async ({
   username,
   email,
   password,
-}: IUserRequest) => {
+}: UserRequest) => {
   const userRepository = AppDataSource.getRepository(User);
 
   const user = await userRepository.findOneBy({ email });
@@ -18,7 +18,7 @@ const userCreateService = async ({
   }
 
   if (user && !user.isActive) {
-    await userRepository.update(user.id, { isActive: false });
+    await userRepository.update(user.id, { isActive: true, password: bcrypt.hashSync(password, 10) });
     return user;
   }
 

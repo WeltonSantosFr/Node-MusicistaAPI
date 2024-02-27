@@ -1,22 +1,25 @@
-export interface IUser {
+import { Multer } from "multer";
+
+export interface User {
   username: string;
   email: string;
   password: string;
 }
 
-export interface IUserRequest {
+export interface UserRequest {
   username: string;
   email: string;
   password: string;
 }
 
-export interface IUserUpdate {
+export interface UserUpdate {
+  profileImagePath?: string
   username?: string;
   email?: string;
   password?: string;
 }
 
-export interface IUserLogin {
+export interface UserLogin {
   email: string;
   password: string;
 }
