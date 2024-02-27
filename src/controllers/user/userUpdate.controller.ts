@@ -3,15 +3,12 @@ import { Request, Response } from "express";
 import userUpdateService from "../../services/user/userUpdate.service";
 import { AppError, handleError } from "../../errors/appError";
 import { instanceToPlain } from "class-transformer";
-import path from "path";
 
 const userUpdateController = async (req: Request, res: Response) => {
   try {
-    const { email, password, username }: UserUpdate =
+    const { email, password, username, profileImagePath }: UserUpdate =
       req.body;
     const { id } = req.user;
-
-    const profileImagePath = req.user.profileImagePath
 
     const user = await userUpdateService(
       { email, password, username, profileImagePath },

@@ -24,12 +24,13 @@ const userUpdateService = async (
       throw new AppError(403, "Inform a different password");
     }
   }
-
+  
+  console.log(profileImagePath)
   await userRepository.update(id, {
     username: username ? username : user.username,
     email: email ? email : user.email,
     password: password ? bcrypt.hashSync(password!, 10) : user.password,
-    profileImagePath: profileImagePath,
+    profileImagePath: profileImagePath ? profileImagePath : user.profileImagePath,
   });
   const updatedUser = await userRepository.find({ where: { id } });
   return updatedUser;
