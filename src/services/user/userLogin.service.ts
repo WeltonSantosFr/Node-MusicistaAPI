@@ -1,4 +1,4 @@
-import { UserLogin } from "./../../interface/user/index";
+import { IUserLogin } from "./../../interface/user/index";
 import bcrypt from "bcrypt";
 import { User } from "../../entities/user.entity";
 import { AppDataSource } from "../../data-source";
@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 import { AppError } from "../../errors/appError";
 
-const userLoginService = async ({ email, password }: UserLogin) => {
+const userLoginService = async ({ email, password }: IUserLogin) => {
   const userRepository = AppDataSource.getRepository(User);
 
   const user = await userRepository.findOneBy({ email: email });
