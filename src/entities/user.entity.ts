@@ -12,6 +12,9 @@ export class User {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
+  @Column({nullable: true})
+  profileImagePath: string
+
   @Column()
   username: string;
 

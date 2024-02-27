@@ -1,3 +1,5 @@
+import { Multer } from "multer";
+
 export interface User {
   username: string;
   email: string;
@@ -11,6 +13,7 @@ export interface UserRequest {
 }
 
 export interface UserUpdate {
+  profileImagePath?: string
   username?: string;
   email?: string;
   password?: string;

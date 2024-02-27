@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { AppError, handleError } from "../../errors/appError";
 import userInfoService from "../../services/user/userInfo.service";
+import { instanceToPlain } from "class-transformer";
 
 const userInfoController = async (req:Request, res:Response) => {
     try {
@@ -8,7 +9,7 @@ const userInfoController = async (req:Request, res:Response) => {
 
         const user = await userInfoService(id)
 
-        return res.status(200).json(user)
+        return res.status(200).json(instanceToPlain(user))
 
     } catch (err) {
         if(err instanceof AppError){
