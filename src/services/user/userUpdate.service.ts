@@ -25,7 +25,6 @@ const userUpdateService = async (
     }
   }
   
-  console.log(profileImagePath)
   await userRepository.update(id, {
     username: username ? username : user.username,
     email: email ? email : user.email,
