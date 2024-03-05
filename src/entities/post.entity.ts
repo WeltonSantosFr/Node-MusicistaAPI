@@ -17,7 +17,7 @@ export class Post {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, {eager:true})
   @JoinColumn({name: 'authorId'})
   author: User
 
@@ -27,11 +27,11 @@ export class Post {
   @Column()
   content: string;
 
-  @OneToMany(() => Rating, rating => rating.post)
+  @OneToMany(() => Rating, rating => rating.post, {cascade:true})
   @JoinColumn({name: 'ratingId'})
-  rating: Rating;
+  rating: Rating[];
   
-  @OneToMany(() => Comment, comment => comment.post)
+  @OneToMany(() => Comment, comment => comment.post, {cascade:true})
   comments: Comment[];
 
   @CreateDateColumn()
