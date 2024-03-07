@@ -27,7 +27,7 @@ export class Post {
   @Column()
   content: string;
 
-  @OneToMany(() => Rating, rating => rating.post, {cascade:true})
+  @OneToMany(() => Rating, rating => rating.post, {cascade:true, eager:true})
   @JoinColumn({name: 'ratingId'})
   rating: Rating[];
   
