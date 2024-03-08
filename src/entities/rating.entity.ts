@@ -20,7 +20,7 @@ import { Post } from "./post.entity";
     @JoinColumn({name: 'authorId'})
     author: User
 
-    @ManyToOne(() => Post, post => post.rating)
+    @ManyToOne(() => Post, post => post.ratings)
     @JoinColumn({name: 'postId'})
     post: Post
   
