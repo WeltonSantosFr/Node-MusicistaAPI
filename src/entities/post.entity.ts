@@ -31,7 +31,7 @@ export class Post {
   @JoinColumn({name: 'ratingId'})
   rating: Rating[];
   
-  @OneToMany(() => Comment, comment => comment.post, {cascade:true})
+  @OneToMany(() => Comment, comment => comment.post, {cascade:true, eager:true})
   comments: Comment[];
 
   @CreateDateColumn()
