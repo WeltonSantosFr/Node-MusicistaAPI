@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: 'franc'
+      POSTGRES_PASSWORD: '1507'
+      POSTGRES_DB: 'musicista_db'
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3001:3001'
+    depends_on:
+      - db
+    environment:
+      NODE_ENV: 'devlopment'
+      HOST: 'node-musicistaapi-db-1'
+      POSTGRES_USER: 'franc'
+      POSTGRES_PASSWORD: '1507'
+      POSTGRES_DB: 'musicista_db'
+      SECRET_KEY: 'abuble'
