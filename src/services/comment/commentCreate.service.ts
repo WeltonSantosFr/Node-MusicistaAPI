@@ -10,8 +10,8 @@ const commentCreateService = async ({comment, postId}:CommentRequest, id:string)
     const postRepository = AppDataSource.getRepository(Post)
     const userRepository = AppDataSource.getRepository(User)
 
-    const user = await userRepository.findOneBy({id})
-    const post = await postRepository.findOneBy({id:postId})
+    const user = await userRepository.findOne({where:{id}})
+    const post = await postRepository.findOne({where:{id:postId}})
 
 
     if(!user) {
