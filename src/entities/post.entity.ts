@@ -2,7 +2,6 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -18,7 +17,6 @@ export class Post {
   readonly id: string;
 
   @ManyToOne(() => User, {eager:true})
-  @JoinColumn({name: 'authorId'})
   author: User
 
   @Column()
@@ -28,7 +26,6 @@ export class Post {
   content: string;
 
   @OneToMany(() => Rating, rating => rating.post, {cascade:true, eager:true})
-  @JoinColumn({name: 'ratingId'})
   ratings: Rating[];
   
   @OneToMany(() => Comment, comment => comment.post, {cascade:true, eager:true})

@@ -5,7 +5,7 @@ import ratingCreateService from "../../services/rating/ratingCreate.service"
 const ratingCreateController = async (req: Request, res: Response) => {
     try {
         const {rating} = req.body
-        const {postId} = req.params
+        const postId = req.params.post
         const {id} = req.user
         const ratingResponse = await ratingCreateService({rating, postId}, id)
 

@@ -2,7 +2,6 @@ import {
     Column,
     CreateDateColumn,
     Entity,
-    JoinColumn,
     ManyToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
@@ -16,11 +15,9 @@ import { Post } from "./post.entity";
     readonly id: string;
   
     @ManyToOne(() => User)
-    @JoinColumn({name: 'authorId'})
     author: User
 
     @ManyToOne(() => Post, post => post.comments)
-    @JoinColumn({name: 'postId'})
     post: Post
   
     @Column()

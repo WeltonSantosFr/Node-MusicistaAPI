@@ -8,6 +8,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { Post } from "./post.entity";
+import { Rating } from "./rating.entity";
 
 @Entity()
 export class User {
@@ -29,6 +30,9 @@ export class User {
 
   @OneToMany(() => Post, post => post.author)
   posts: Post[]
+
+  @OneToMany(() => Rating, rating => rating.author)
+  ratings: Rating[]
 
   @CreateDateColumn()
   createdAt: Date;

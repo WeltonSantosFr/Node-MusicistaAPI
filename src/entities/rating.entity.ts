@@ -2,26 +2,24 @@ import {
     Column,
     CreateDateColumn,
     Entity,
-    JoinColumn,
     ManyToOne,
-    OneToOne,
     PrimaryGeneratedColumn,
+    Unique,
     UpdateDateColumn,
   } from "typeorm";
   import { User } from "./user.entity";
 import { Post } from "./post.entity";
   
   @Entity()
+  @Unique(["author", "post"])
   export class Rating {
     @PrimaryGeneratedColumn("uuid")
     readonly id: string;
   
-    @OneToOne(() => User)
-    @JoinColumn({name: 'authorId'})
+    @ManyToOne(() => User, user => user.ratings)
     author: User
 
     @ManyToOne(() => Post, post => post.ratings)
-    @JoinColumn({name: 'postId'})
     post: Post
   
     @Column()
